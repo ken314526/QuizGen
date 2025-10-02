@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Profile - AI Quiz Management{% endblock %}
+
+{% block content %}
+<section class="max-w-md mx-auto bg-white rounded-lg shadow p-6 dark:bg-gray-800">
+    <h2 class="text-xl font-semibold mb-6 text-gray-900 dark:text-white">Your Profile</h2>
+
+    <div class="mb-6 flex items-center">
+        {% if user.avatar %}
+        <img src="{{ user.avatar.url }}" alt="User Avatar" class="inline-block h-16 w-16 rounded-full mr-4" />
+        {% else %}
+        <div class="inline-block h-16 w-16 rounded-full bg-gray-300 mr-4"></div>
+        {% endif %}
+        <span class="text-lg font-semibold text-gray-900 dark:text-white">{{ user.username }}</span>
+    </div>
+
+    <form method="post" action="{% url 'profile' %}" class="space-y-4" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <div>
+            <label for="username" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Username</label>
+            <input type="text" name="username" id="username" value="{{ username }}"
+                class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white"
+                required />
+        </div>
+
+        <div>
+            <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Your email</label>
+            <input type="email" name="email" id="email" value="{{ email }}" class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:text-white" placeholder="name@company.com" required />
+        </div>
+
+        <div>
+            <label for="password" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Password</label>
+            <input type="password" name="password" id="password" placeholder="••••••••" value="" 
+            class="bg-gray-50 border border-gray-300 text-gray-900 rounded-lg block w-full p-2.5 dark:bg-gray-700
+            dark:border-gray-600 dark:text-white" />
+        </div>
+
+        <div>
+            <label for="avatar" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Change
+                Avatar</label>
+            <input type="file" name="avatar" id="avatar" class="block w-full text-sm text-gray-900 dark:text-white" />
+        </div>
+
+        <button type="submit"
+            class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+            Update Profile
+        </button>
+    </form>
+
+    {% if error %}
+    <p class="text-red-600">{{ error }}</p>
+    {% endif %}
+</section>
+{% endblock %}
