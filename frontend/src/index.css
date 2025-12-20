@@ -1,0 +1,237 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* QuizZen Design System - Modern Educational Platform */
+
+@layer base {
+  :root {
+    /* Light theme */
+    --background: 0 0% 100%;
+    --foreground: 220 15% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 15% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 15% 15%;
+
+    --primary: 258 100% 68%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 280 100% 78%;
+
+    --secondary: 240 5% 96%;
+    --secondary-foreground: 220 15% 25%;
+
+    --muted: 240 5% 96%;
+    --muted-foreground: 220 10% 50%;
+
+    --accent: 258 100% 95%;
+    --accent-foreground: 258 100% 40%;
+
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 240 6% 90%;
+    --input: 240 6% 90%;
+    --ring: 258 100% 68%;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(258 100% 68%), hsl(280 100% 78%));
+    --gradient-success: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 76% 46%));
+    --gradient-danger: linear-gradient(135deg, hsl(0 84% 60%), hsl(0 84% 70%));
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%), hsl(240 5% 98%));
+    
+    /* Shadows */
+    --shadow-elegant: 0 4px 20px -2px hsl(258 100% 68% / 0.2);
+    --shadow-card: 0 2px 10px -2px hsl(220 15% 15% / 0.1);
+    --shadow-glow: 0 0 30px hsl(258 100% 68% / 0.3);
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark theme */
+    --background: 220 15% 8%;
+    --foreground: 0 0% 95%;
+
+    --card: 220 15% 10%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 220 15% 10%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 258 100% 68%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 280 100% 78%;
+
+    --secondary: 220 15% 15%;
+    --secondary-foreground: 0 0% 85%;
+
+    --muted: 220 15% 15%;
+    --muted-foreground: 0 0% 60%;
+
+    --accent: 258 100% 20%;
+    --accent-foreground: 258 100% 80%;
+
+    --success: 142 76% 45%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 60%;
+    --warning-foreground: 0 0% 100%;
+
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 20%;
+    --input: 220 15% 20%;
+    --ring: 258 100% 68%;
+
+    /* Dark gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(258 100% 68%), hsl(280 100% 78%));
+    --gradient-success: linear-gradient(135deg, hsl(142 76% 45%), hsl(142 76% 55%));
+    --gradient-danger: linear-gradient(135deg, hsl(0 84% 65%), hsl(0 84% 75%));
+    --gradient-card: linear-gradient(135deg, hsl(220 15% 10%), hsl(220 15% 12%));
+    
+    /* Dark shadows */
+    --shadow-elegant: 0 4px 20px -2px hsl(258 100% 68% / 0.3);
+    --shadow-card: 0 2px 10px -2px hsl(0 0% 0% / 0.3);
+    --shadow-glow: 0 0 30px hsl(258 100% 68% / 0.4);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+@layer components {
+  /* Gradient utilities */
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-success {
+    background: var(--gradient-success);
+  }
+
+  .gradient-danger {
+    background: var(--gradient-danger);
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+
+  /* Shadow utilities */
+  .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .shadow-glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  /* Interactive animations */
+  .hover-scale {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .quiz-card {
+    transition: all 0.3s ease;
+    background: var(--gradient-card);
+    box-shadow: var(--shadow-card);
+  }
+
+  .quiz-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-elegant);
+  }
+
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out;
+  }
+
+  .animate-slide-in {
+    animation: slideIn 0.3s ease-out;
+  }
+
+  .animate-bounce-in {
+    animation: bounceIn 0.4s ease-out;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
